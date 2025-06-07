@@ -1,6 +1,4 @@
-import styled, { keyframes, css } from "styled-components";
-
-const leftRotateAndFadeinAnimation = keyframes`
+const leftRotateAndFadeinAnimation = `
   from {
     transform: rotate(-10deg);
   }
@@ -10,7 +8,7 @@ const leftRotateAndFadeinAnimation = keyframes`
   }
 `;
 
-const rightRotateAndFadeinAnimation = keyframes`
+const rightRotateAndFadeinAnimation = `
   from {
     transform: rotate(10deg);
   }
@@ -20,7 +18,7 @@ const rightRotateAndFadeinAnimation = keyframes`
   }
 `;
 
-const boomAnaimation = keyframes`
+const boomAnaimation = `
   from {
     transform: scale(0.8);
   }
@@ -30,7 +28,7 @@ const boomAnaimation = keyframes`
   }
 `;
 
-export const Container = styled.div`
+export const Container = `
   width: 100vw;
   min-height: 100vh;
   display: flex;

@@ -9,14 +9,16 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@tailwindcss/postcss": "^4.1.8",
     "better-auth": "^1.2.8",
     "dotenv": "^16.5.0",
     "drizzle-orm": "^0.44.2",
     "next": "15.3.3",
     "pg": "^8.16.0",
+    "postcss": "^8.5.4",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "styled-components": "^6.1.18"
+    "tailwindcss": "^4.1.8"
   },
   "devDependencies": {
     "@types/node": "^20",
