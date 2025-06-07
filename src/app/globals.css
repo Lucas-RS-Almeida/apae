@@ -35,6 +35,17 @@ a {
   text-decoration: none;
 }
 
+input {
+  font-size: 1rem;
+  outline: none;
+}
+
+button {
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+}
+
 @media (prefers-color-scheme: dark) {
   html {
     color-scheme: dark;
