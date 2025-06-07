@@ -34,28 +34,31 @@ export const usersTable = pgTable("users", {
 });
 
 // Intermediate table to relate n-n to users, patients and charts
-export const usersToPatientsAndDiagnosesTable = pgTable("users_to_patients", {
-  userId: text("user_id")
-    .notNull()
-    .references(() => usersTable.id),
-  patientId: uuid("patient_id")
-    .notNull()
-    .references(() => patientsTable.id),
-  chartId: uuid("chart_id")
-    .notNull()
-    .references(() => diagnosesTable.id),
-  createdAt: timestamp("created_at").notNull().defaultNow(),
-  updatedAt: timestamp("updated_at")
-    .notNull()
-    .defaultNow()
-    .$default(() => new Date()),
-});
+export const usersToPatientsAndDiagnosesTable = pgTable(
+  "users_to_patients_and_diagnoses",
+  {
+    userId: text("user_id")
+      .notNull()
+      .references(() => usersTable.id),
+    patientId: uuid("patient_id")
+      .notNull()
+      .references(() => patientsTable.id),
+    chartId: uuid("chart_id")
+      .notNull()
+      .references(() => diagnosesTable.id),
+    createdAt: timestamp("created_at").notNull().defaultNow(),
+    updatedAt: timestamp("updated_at")
+      .notNull()
+      .defaultNow()
+      .$default(() => new Date()),
+  }
+);
 
 export const usersTableRelations = relations(usersTable, ({ many }) => ({
   usersToPatientsAndDiagnoses: many(usersToPatientsAndDiagnosesTable),
 }));
 
-export const patientsSexEnum = pgEnum("patients_sex", ["male", "female"]);
+export const patientSexEnum = pgEnum("patient_sex", ["male", "female"]);
 
 export const patientsTable = pgTable("patients", {
   id: uuid("id").notNull().primaryKey().defaultRandom(),
@@ -76,7 +79,7 @@ export const patientsTable = pgTable("patients", {
   inTreatment: boolean("in_service")
     .notNull()
     .$default(() => true),
-  sex: patientsSexEnum("sex").notNull(), // male, female
+  sex: patientSexEnum("sex").notNull(), // male, female
   homeNumber: text("home_number"),
   createdAt: timestamp("created_at").notNull().defaultNow(),
   updatedAt: timestamp("updated_at")
