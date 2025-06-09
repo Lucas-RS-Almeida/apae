@@ -9,7 +9,7 @@ export function SignUpFormComponent({
 }: ISignUpFormProps) {
   return (
     <>
-      <form className="w-full">
+      <form className="w-full boomAnimation">
         <div>
           <input
             placeholder="Nome de Usuário"

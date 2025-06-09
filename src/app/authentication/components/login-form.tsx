@@ -13,7 +13,7 @@ export function LoginFormComponent({
 
   return (
     <>
-      <form className="w-full">
+      <form className="w-full boomAnimation">
         <div>
           <input
             placeholder="E-mail"

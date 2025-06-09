@@ -53,3 +53,45 @@ button {
     color-scheme: dark;
   }
 }
+
+@keyframes leftRotateAndFadeinAnimation {
+  from {
+    transform: rotate(-10deg);
+  }
+
+  to {
+    transform: rotate(-7deg);
+  }
+}
+
+@keyframes rightRotateAndFadeinAnimation {
+  from {
+    transform: rotate(10deg);
+  }
+
+  to {
+    transform: rotate(7deg);
+  }
+}
+
+@keyframes boomAnimation {
+  from {
+    transform: scale(0.8);
+  }
+
+  to {
+    transform: scale(1);
+  }
+}
+
+.leftRotateAndFadeinAnimation {
+  animation: leftRotateAndFadeinAnimation 0.5s ease-in-out;
+}
+
+.rightRotateAndFadeinAnimation {
+  animation: rightRotateAndFadeinAnimation 0.5s ease-in-out;
+}
+
+.boomAnimation {
+  animation: boomAnimation 0.5s ease-in-out;
+}
