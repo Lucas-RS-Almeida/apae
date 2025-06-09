@@ -33,29 +33,8 @@ export const usersTable = pgTable("users", {
     .notNull(),
 });
 
-// Intermediate table to relate n-n to users, patients and charts
-export const usersToPatientsAndDiagnosesTable = pgTable(
-  "users_to_patients_and_diagnoses",
-  {
-    userId: text("user_id")
-      .notNull()
-      .references(() => usersTable.id),
-    patientId: uuid("patient_id")
-      .notNull()
-      .references(() => patientsTable.id),
-    chartId: uuid("chart_id")
-      .notNull()
-      .references(() => diagnosesTable.id),
-    createdAt: timestamp("created_at").notNull().defaultNow(),
-    updatedAt: timestamp("updated_at")
-      .notNull()
-      .defaultNow()
-      .$default(() => new Date()),
-  }
-);
-
 export const usersTableRelations = relations(usersTable, ({ many }) => ({
-  usersToPatientsAndDiagnoses: many(usersToPatientsAndDiagnosesTable),
+  diagnoses: many(diagnosesTable),
 }));
 
 export const patientSexEnum = pgEnum("patient_sex", ["male", "female"]);
@@ -89,7 +68,7 @@ export const patientsTable = pgTable("patients", {
 });
 
 export const patientsTableRelations = relations(patientsTable, ({ many }) => ({
-  usersToPatientsAndDiagnoses: many(usersToPatientsAndDiagnosesTable),
+  diagnoses: many(diagnosesTable),
 }));
 
 export const diagnosesTable = pgTable("diagnoses", {
@@ -97,7 +76,7 @@ export const diagnosesTable = pgTable("diagnoses", {
   patientId: uuid("patient_id")
     .notNull()
     .references(() => patientsTable.id),
-  userId: uuid("user_id")
+  userId: text("user_id")
     .notNull()
     .references(() => usersTable.id),
   description: text("description").notNull(),
@@ -135,7 +114,7 @@ export const sessionsTable = pgTable("sessions", {
     .references(() => usersTable.id, { onDelete: "cascade" }),
 });
 
-export const accountsTables = pgTable("accounts", {
+export const accountsTable = pgTable("accounts", {
   id: text("id").primaryKey(),
   accountId: text("account_id").notNull(),
   providerId: text("provider_id").notNull(),
