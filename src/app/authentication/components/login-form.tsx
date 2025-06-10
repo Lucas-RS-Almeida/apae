@@ -1,4 +1,5 @@
 import { z } from "zod";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { redirect, useRouter } from "next/navigation";
@@ -32,6 +33,8 @@ export function LoginFormComponent({
     redirect("/dashboard");
   }
 
+  const [typeInput, setTypeInput] = useState<"text" | "password">("password");
+
   const form = useForm<z.infer<typeof loginSchema>>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -44,6 +47,10 @@ export function LoginFormComponent({
 
   function handleTogglePage(path: string) {
     redirect(path);
+  }
+
+  function handleToggleTypeInput() {
+    setTypeInput(prevState => prevState === "password" ? "text" : "password");
   }
 
   async function onSubmit(values: z.infer<typeof loginSchema>) {
@@ -81,19 +88,26 @@ export function LoginFormComponent({
             className="w-full h-10 !px-4 border border-[#ccc] rounded-md bg-transparent"
             {...form.register("email")}
           />
+          {form.formState.errors.email && <small className="text-red-600">{form.formState.errors.email.message}</small>}
         </div>
         <div className="!mt-4">
           <input
-            type="password"
+            type={typeInput}
             placeholder="Senha"
             className="w-full h-10 !px-4 border border-[#ccc] rounded-md bg-transparent"
             {...form.register("password")}
           />
+          {form.formState.errors.password && <small className="text-red-600">{form.formState.errors.password.message}</small>}
+        </div>
+
+        <div className="flex items-center gap-1 !mt-2">
+          <input type="checkbox" onClick={handleToggleTypeInput} className="cursor-pointer" />
+          <label>Mostrar senha</label>
         </div>
 
         <button
           type="submit"
-          className="w-full h-10 flex items-center justify-center !mt-6 rounded-md uppercase transition-all duration-200 ease-in bg-[#048ce1] text-white hover:bg-[#006db0]"
+          className="w-full h-10 flex items-center justify-center !mt-6 rounded-md uppercase transition-all duration-200 ease-in bg-[#0476D9] text-white hover:bg-[#006db0]"
           disabled={form.formState.isSubmitting}
         >
           {form.formState.isSubmitting ? (

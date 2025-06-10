@@ -84,6 +84,23 @@ button {
   }
 }
 
+@keyframes spinAnimation {
+  0% {
+    transform: scale(0.6);
+    transform: rotate(0);
+  }
+
+  50% {
+    transform: scale(1);
+    transform: rotate(180deg);
+  }
+
+  100% {
+    transform: scale(0.6);
+    transform: rotate(360deg);
+  }
+}
+
 .leftRotateAndFadeinAnimation {
   animation: leftRotateAndFadeinAnimation 0.5s ease-in-out;
 }
@@ -94,4 +111,8 @@ button {
 
 .boomAnimation {
   animation: boomAnimation 0.5s ease-in-out;
+}
+
+.spinAnimation {
+  animation: spinAnimation 2s ease infinite;
 }

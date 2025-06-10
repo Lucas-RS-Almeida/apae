@@ -2,14 +2,22 @@
 
 import { useState } from "react";
 
-import { LoginFormComponent } from "./components/login-form";
+import { authClient } from "@/lib/auth-client";
 
+import { LoginFormComponent } from "./components/login-form";
 import { SignUpFormComponent } from "./components/sign-up-form";
+import { LoadingScreen } from "./components/loading-screen";
 
 export default function AuthenticationPage() {
   const [optionAuthentication, setOptionAuthentication] = useState<
     "login" | "signup"
   >("login");
+
+  const { isPending } = authClient.useSession();
+
+  if (isPending) {
+    return <LoadingScreen />;
+  }
 
   function handleToggleOptionAuthentication(option: "login" | "signup") {
     setOptionAuthentication(option);
