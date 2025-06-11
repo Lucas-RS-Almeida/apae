@@ -7,13 +7,13 @@ export function LoadingScreen() {
             src="/images/bloom.png"
             alt="APAE Icon"
             loading="lazy"
-            className="max-w-[100px] absolute top-0 left-12 spinAnimation"
+            className="max-w-[100px] absolute top-0 left-[52px] spinAnimation"
           />
           <img
             src="/images/petal.png"
             alt="APAE Icon"
             loading="lazy"
-            className="max-w-[160px] absolute bottom-24 left-5"
+            className="max-w-[160px] absolute bottom-24 left-5 hiddenAnimation"
           />
           <img
             src="/images/hands.png"

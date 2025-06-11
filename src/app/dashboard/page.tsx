@@ -12,5 +12,5 @@ export default async function DashboardPage() {
     redirect("/authentication");
   }
 
-  return <>DashboardPage</>;
+  return <div className="min-h-screen">DashboardPage</div>;
 }

@@ -102,12 +102,12 @@ export function LoginFormComponent({
 
         <div className="flex items-center gap-1 !mt-2">
           <input type="checkbox" onClick={handleToggleTypeInput} className="cursor-pointer" />
-          <label>Mostrar senha</label>
+          <label className="text-[14px]">Mostrar senha</label>
         </div>
 
         <button
           type="submit"
-          className="w-full h-10 flex items-center justify-center !mt-6 rounded-md uppercase transition-all duration-200 ease-in bg-[#0476D9] text-white hover:bg-[#006db0]"
+          className="w-full h-10 flex items-center justify-center !mt-6 rounded-md uppercase transition-all duration-200 ease-in bg-[#0476D9] text-white hover:bg-[#006db0] disabled:cursor-none"
           disabled={form.formState.isSubmitting}
         >
           {form.formState.isSubmitting ? (

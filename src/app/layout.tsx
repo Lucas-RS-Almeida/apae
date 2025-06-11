@@ -1,11 +1,8 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import { ToastContainer } from "react-toastify";
-import { headers } from "next/headers";
 
 import "./globals.css";
-
-import { auth } from "@/lib/auth";
 
 import { Sidebar } from "./_components/Sidebar";
 
@@ -29,17 +26,13 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const session = await auth.api.getSession({
-    headers: await headers(),
-  });
-
   return (
     <html lang="pt-BR">
       <body className={`${geistSans.variable} ${geistMono.variable}`}>
         <ToastContainer autoClose={3000} position="bottom-center" />
 
-        <div className="w-full flex">
-          {session?.user && <Sidebar />}
+        <div className="w-full flex bg-[#eee]">
+          <Sidebar />
 
           {children}
         </div>

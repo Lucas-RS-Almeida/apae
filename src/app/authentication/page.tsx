@@ -24,7 +24,7 @@ export default function AuthenticationPage() {
   }
 
   return (
-    <div className="w-screen min-h-screen flex items-center justify-center">
+    <div className="w-screen min-h-screen flex items-center justify-center !px-4">
       <div className="w-full max-w-[800px] flex items-center justify-center gap-8 md:justify-normal">
         <div className="flex-1 items-center relative hidden md:flex">
           <div className="w-1/2 max-w-[260px] h-[300px] rounded-md bg-center bg-cover bg-no-repeat relative -to-4 left-4 rotate-[-7deg] bg-[url('/images/male.png')] leftRotateAndFadeinAnimation" />
